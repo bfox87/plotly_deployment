@@ -1,0 +1,12 @@
+body {
+    border: 5px solid blue;
+}
+
+.panel-body {
+    background-color: #E0FFFF;
+}
+
+.jumbotron {
+    background-image: url("../images/bacteria.JPG");
+    background-size: 110% 110%;
+}
