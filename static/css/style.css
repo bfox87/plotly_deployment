@@ -8,5 +8,6 @@ body {
 
 .jumbotron {
     background-image: url("../images/bacteria.JPG");
-    background-size: 110% 110%;
+    background-size: 100% 100%;
+    
 }
