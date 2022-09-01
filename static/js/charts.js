@@ -75,7 +75,7 @@ function buildCharts(sample) {
     var result1 = metaArray[0];
 
     // Deliv1 Step 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    var otuIDs = result.otu_ids;
+    var otuIds = result.otu_ids;
     var otuLabels = result.otu_labels;
     var sampleValues = result.sample_values;
     
@@ -85,18 +85,17 @@ function buildCharts(sample) {
     // Deliv1 Step 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order
     // so the otu_ids with the most bacteria are last. 
-    var yticks = otuIDs.slice(0,10).map(id => `OTU ${id}`).reverse();
+    var yticks = otuIds.slice(0,10).map(id => `OTU ${id}`).reverse();
 
-    // D1 Step 8. Create the trace for the bar chart. 
+    // Deliv1 Step 8. Create the trace for the bar chart. 
     var barData = [ {
       x: sampleValues.slice(0,10).reverse(),
       y: yticks,
       text: otuLabels.slice(0,10).reverse(),
       type: "bar",
       orientation: "h"
-    }
-      
-    ];
+    }];
+
     // Deliv1 Step 9. Create the layout for the bar chart. 
     var barLayout = {
       title: "Top 10 Bacteria Cultures Found",
@@ -108,31 +107,28 @@ function buildCharts(sample) {
     // Deliv 2: Bubble Chart
     // Deliv2 Step 1. Create the trace for the bubble chart.
     var bubbleData = [ {
-      x: otuIDs,
+      x: otuIds,
       y: sampleValues,
       text: otuLabels,
       mode: "markers",
       marker: {
         size: sampleValues,
-        color: otuIDs,
+        color: otuIds,
         colorscale: "Earth"
       } 
-    }
-   
-    ];
+    }];
 
     // Deliv2 Step 2. Create the layout for the bubble chart.
     var bubbleLayout = {
       title: "Bacteria Cultures per Sample",
       xaxis: {title: "OTU ID"},
       hovermode: "closest" 
-      
     };
 
     // Deliv2 Step 3. Use Plotly to plot the data with the layout.
     Plotly.newPlot("bubble", bubbleData, bubbleLayout); 
 
-    // Deliv 3: Gauge Chart (Steps 1-3 further up)
+    // Deliv 3: Gauge Chart (Steps 1-3 of deliv3 further up, row 67)
     // Deliv3 Step 4. Create the trace for the gauge chart.
     var gaugeData = [ {
       domain: {x: [0,1], y: [0,1]},
@@ -151,9 +147,7 @@ function buildCharts(sample) {
       title: "Belly Button Washing Frequency <br><sup>Scrubs per Week</sup>",
       type: "indicator",
       mode: "gauge+number"
-    }
-    
-    ];
+    }];
 
     // Deliv3 Step 5. Create the layout for the gauge chart.
     var gaugeLayout = {
@@ -164,7 +158,6 @@ function buildCharts(sample) {
 
     // Deliv3 Step 6. Use Plotly to plot the gauge data and layout.
     Plotly.newPlot("gauge", gaugeData, gaugeLayout);
-
 
   });
 }
